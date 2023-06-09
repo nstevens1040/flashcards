@@ -2299,7 +2299,7 @@
                 document.getElementById("ans").appendChild(ul2);
                 var ratdiv = document.createElement("div");
                 ratdiv.classList.add("rationale");
-                ratdiv.innerHTML = exam[question_index - 1].question.rationale;
+                ratdiv.innerHTML = exam[question_index - 1].question.rationale.trim().replace(/\n/g,"<br/>");
                 document.getElementById("ans").appendChild(ratdiv);
             }
             var a,b,c,d,e,f = false;
