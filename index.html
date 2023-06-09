@@ -2197,6 +2197,11 @@
                     document.getElementById("backbutton").style.display = "none";
                 } else {
                     document.getElementById("backbutton").style.display = "block";
+                    if(question_index == (exam.length - 1)){
+                        document.getElementById("nextbutton").style.display = "none";
+                    } else {
+                        document.getElementById("nextbutton").style.display = "block";
+                    }
                 }
                 document.getElementById("qtext").innerHTML = exam[question_index].question.text.trim().replace(/\n/g,"<br/>");
                 document.getElementById("form1").innerHTML = "";
