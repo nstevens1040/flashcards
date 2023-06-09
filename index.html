@@ -2198,7 +2198,7 @@
                 } else {
                     document.getElementById("backbutton").style.display = "block";
                 }
-                document.getElementById("qtext").innerHTML = exam[question_index].question.text.trim();
+                document.getElementById("qtext").innerHTML = exam[question_index].question.text.trim().replace(/\n/g,"<br/>");
                 document.getElementById("form1").innerHTML = "";
                 document.getElementById("ans").innerHTML = "";
                 var ul2 = document.createElement("ul");
