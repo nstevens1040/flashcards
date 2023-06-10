@@ -161,32 +161,33 @@
                 if(typeof(exam) == 'undefined'){
                     return;
                 }
-                if(document.cookie != ""){
-                    var csb64 = document.cookie.split(';')[0].split('=')[1];
-                    var cval = atob(csb64);
-                    if(firstload){
-                        var kvps = [];
-                        cval.split('&').forEach((kvp)=>{
-                            var key = kvp.split('=')[0];
-                            var vra = []; for(var i = 1; i < (kvp.split('=').length - 1); i++){ vra.push(kvp.split('=')[i]); }
-                            var val = vra.join('=');
-                            switch(key){
-                                case "qindex":
-                                    question_index = parseInt(val);
-                                    break;
-                                case "numcorrect":
-                                    current_correct = parseInt(val);
-                                    break;
-                                case "aincorrect":
-                                    answered_incorrect = JSON.parse(val);
-                                    break;
-                                default:
-                                    break;
-                            }
-                        });
+                if(document.cookie.match(/progress/)){
+                    var csb64 = document.cookie.split(';').filter(function(a){ return (a.match(/progress/)); })[0]
+                    if(typeof(csb64) != 'undefined'){
+                        var cval = atob(csb64);
+                        if(firstload){
+                            var kvps = [];
+                            cval.split('&').forEach((kvp)=>{
+                                var key = kvp.split('=')[0];
+                                var vra = []; for(var i = 1; i < (kvp.split('=').length - 1); i++){ vra.push(kvp.split('=')[i]); }
+                                var val = vra.join('=');
+                                switch(key){
+                                    case "qindex":
+                                        question_index = parseInt(val);
+                                        break;
+                                    case "numcorrect":
+                                        current_correct = parseInt(val);
+                                        break;
+                                    case "aincorrect":
+                                        answered_incorrect = JSON.parse(val);
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            });
+                        }
                     }
                 }
-
                 if(firstload){ firstload = false; }
                 a = false;
                 b = false;
