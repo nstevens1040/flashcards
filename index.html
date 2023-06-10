@@ -169,7 +169,7 @@
                             var kvps = [];
                             cval.split('&').forEach((kvp)=>{
                                 var key = kvp.split('=')[0];
-                                var vra = []; for(var i = 1; i < (kvp.split('=').length - 1); i++){ vra.push(kvp.split('=')[i]); }
+                                var vra = []; for(var i = 1; i < kvp.split('=').length; i++){ vra.push(kvp.split('=')[i]); }
                                 var val = vra.join('=');
                                 switch(key){
                                     case "qindex":
