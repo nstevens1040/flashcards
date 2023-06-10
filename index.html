@@ -164,7 +164,7 @@
                 if(document.cookie.match(/progress/)){
                     var csb64 = document.cookie.split(';').filter(function(a){ return (a.match(/progress/)); })[0]
                     if(typeof(csb64) != 'undefined'){
-                        var cval = atob(csb64);
+                        var cval = atob(csb64.split('=')[1]);
                         if(firstload){
                             var kvps = [];
                             cval.split('&').forEach((kvp)=>{
