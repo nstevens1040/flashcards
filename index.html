@@ -179,7 +179,9 @@
                                         current_correct = parseInt(val);
                                         break;
                                     case "aincorrect":
-                                        answered_incorrect = JSON.parse(val);
+                                        if(val != '[]'){
+                                            answered_incorrect = JSON.parse(val);
+                                        }
                                         break;
                                     default:
                                         break;
