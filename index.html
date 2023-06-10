@@ -183,6 +183,10 @@
                                             answered_incorrect = JSON.parse(val);
                                         }
                                         break;
+                                    case "acorrect":
+                                        if(val != '[]'){
+                                            answered_correct = JSON.parse(val);
+                                        }
                                     default:
                                         break;
                                 }
@@ -191,6 +195,7 @@
                     }
                 }
                 if(firstload){ firstload = false; }
+                document.scrollingElement.scrollTo(0,0);
                 a = false;
                 b = false;
                 c = false;
@@ -331,7 +336,7 @@
                 document.getElementById("ans").appendChild(ratdiv);
                 document.scrollingElement.scrollBy(0,1000);
                 if(correct){ current_correct++; answered_correct.push(exam[question_index - 1].question.id); } else { answered_incorrect.push(exam[question_index - 1].question.id); }
-                var cookie_string = "qindex=" + question_index.toString() + "&numcorrect=" + current_correct + "&aincorrect=" + JSON.stringify(answered_incorrect);
+                var cookie_string = "qindex=" + question_index.toString() + "&numcorrect=" + current_correct + "&aincorrect=" + JSON.stringify(answered_incorrect) + "&acorrect=" + JSON.stringify(answered_correct);
                 var csb64 = btoa(cookie_string);
                 document.cookie = "progress=" + csb64 + "; expires=" + new Date(new Date().getTime() + 31536000000).toUTCString() + "; path=/; domain=" + new URL(document.location.href).host;
             }
